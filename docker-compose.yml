@@ -1,0 +1,12 @@
+services:
+  babypips-scraper:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - DISPLAY=:99
+      - CHROME_OPTIONS=--no-sandbox --disable-dev-shm-usage --headless --disable-gpu --window-size=1920,1080
+    restart: unless-stopped
+    volumes:
+      - .:/app
